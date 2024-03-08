@@ -1,0 +1,40 @@
+swagger: "2.0"
+info:
+  description: "A simple Google Cloud Endpoints API example."
+  title: "Endpoints Example"
+  version: "1.0.0"
+host: "playground-s-11-d2c10612.appspot.com"
+schemes:
+  - "https"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths:
+  "/api/data":
+    post:
+      description: "Echo back a given message."
+      operationId: "echo"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Echo"
+          schema:
+            $ref: "#/definitions/echoMessage"
+      parameters:
+        - description: "Message to echo"
+          in: body
+          name: message
+          required: true
+          schema:
+            $ref: "#/definitions/echoMessage"
+
+definitions:
+  echoMessage:
+    type: object
+    properties:
+      message:
+        type: string
+    required:
+      - message
